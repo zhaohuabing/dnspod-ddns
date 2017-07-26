@@ -8,11 +8,11 @@ import socket
 import re
 import json
 
-username = 'your_email@gmail.com'
-password = 'your_password'
+username = 'yourmail@gmail.com'
+password = 'yourpassword'
 format = 'json'
 
-domain = [u'www.you_domain_name.com'] 
+domain = [u'www.yourdomainname.com'] 
 
 def get_domain_info(domain):
   domain_split = domain.split('.')
@@ -90,6 +90,7 @@ if __name__ == '__main__':
   try:
     for dm in domain:
       domain_data = get_domain(dm)
+      print domain_data
       if domain_data == None:
         continue
       dns_domain,dmain_ip,record_id,domain_id = domain_data
@@ -100,5 +101,6 @@ if __name__ == '__main__':
         continue
       else:
         update_dns_record(domain_name,domain_id,record_id,ip)
+        print "IP changed to:", ip
   except:
     pass
